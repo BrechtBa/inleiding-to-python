@@ -3,13 +3,14 @@
 
 \usepackage[margin=2.5cm]{geometry}     % Marges instellen
 \usepackage[dutch]{babel}               % Voor nederlandstalige hyphenatie (woordsplitsing)
-\usepackage{graphicx}         			% Om figuren te kunnen verwerken
-\usepackage[utf8]{inputenc}             % Om niet ascii karakters rechtstreeks te kunnen typen
-\usepackage{parskip}                    % Om paragrafen met een verticale spatie ipv horizontaal te starten
-\usepackage{listings}					% Om code weer te geven
-\usepackage{courier}
+\usepackage{graphicx}         			% Figuren verwerken
+\usepackage[utf8]{inputenc}             % Niet ascii karakters rechtstreeks typen
+\usepackage{parskip}                    % Paragrafen met een verticale spatie
+\usepackage{listings}					% Code weergeven
+\usepackage{courier}					% Code lettertype
 \usepackage{textcomp}
-\usepackage[pdftex,                     % Om hyperlinks en metadata te hebben in het pdfdocument.
+\usepackage{xcolor}                     % Kleuren
+\usepackage[pdftex,                     % Hyperlinks en metadata in het pdfdocument.
 			plainpages=false,
             pdfauthor={Brecht Baeten},
             pdftitle={Inleiding to Python}]{hyperref}
@@ -19,7 +20,10 @@
         tabsize=4,
         breaklines=true,
         showstringspaces=false,
-        upquote=true}
+        upquote=true,
+        xleftmargin=1cm,
+        xrightmargin=1cm,
+        backgroundcolor=\color{black!5!white}}
 
 \title{Inleiding tot Python}
 \author{Brecht Baeten}
@@ -35,7 +39,7 @@ Een nadeel van Python ten opzichte van Matlab is dat de verschillende beschikbar
 
 De broncode van deze tekst alsook alle voorbeelden kunnen worden gedownload via \url{https://github.com/BrechtBa/inleiding-tot-python/}.
 
-	\section{Installatie in Windows}
+	\section{Installatie onder Windows}
 Alle nog ondersteunde versies van Python kunnen worden gedownload via \url{https://www.python.org/downloads/}. Hier vind je de broncode en installer executables voor verschillende platformen. Downloaden, uitvoeren en klaar. Het is wel aan te randen om niet de nieuwste versie te installeren aangezien verschillende modules een tijdje nodig hebben om hun code aan te passen naar een nieuwe versie. Tijdens de installatie is het interessant om Python aan je Windows search path toe te voegen, zo kan je python steeds van in een command line interface openen. Het is ook interessant om de installatie locatie te veranderen naar bijvoorbeeld  "\textsf{C://python34}".
 
 Je kan nu al Python starten door op python.exe te klikken. Er opent een console waarin je python commando's kan invoeren (zie Figuur \ref{fig:Python34}). Typ hier bijvoorbeeld:
@@ -54,6 +58,8 @@ Druk op enter en je hebt je eerste python commando uitgevoerd.
 Python code kan opgeslagen worden in eenvoudige tekst bestanden met de extentie "\textsf{.py}". Om deze te schrijven is een goede text editor met syntax highlighting aan te raden. In Windows is \emph{notepad++} een goed, open source alternatief met syntax highlighting voor Python en een groot aantal andere talen ingebouwd. \emph{notepad++} kan worden gedownload via \url{https://notepad-plus-plus.org/download/}.
 
 Omdat Python vanuit een command line interface zal worden aangeroepen is het interessant om een deftige console te installeren. \emph{ConEmu} is een open source console emulator met gelijkenissen aan \emph{bash} in Linux. Deze is te downloaden vanaf \url{http://sourceforge.net/projects/conemu/files/latest/download}. Simpelweg downloaden, unzippen in een folder naar keuze en klaar. De standaard \emph{cmd} console kan echter ook gebruikt worden.
+
+Onder windows wordt Python vaak geïnstalleerd als deel van een distributie. Hierbij worden een aantal vaak gebruikte modules reeds geïnstalleerd zonder dat de gebruiker ze manueel moet zoeken en configureren. Een vaak gebruikte distributie is \emph{PythonWin} te downloaden vanaf \url{https://winpython.github.io/}. Hierbij wordt ook \emph{Spyder}, een veel gebruikte Python IDE, meegeleverd.
 
  	\section{Scripts}
 Omdat het telkens opnieuw invoeren van commando's achter elkaar niet zo praktisch is, is het interessant om een reeks commando's op te slaan in een script en dit uit te voeren. Open een teksteditor en typ "\lstinline{print('Hello World!')}"\ en sla het bestand op als \textsf{hello\_world.py}. Om het bestand uit te voeren open je een console, navigeer naar de locatie waar je het bestand hebt opgeslagen, typ "\lstinline[language=bash]{python hello_world.py}"\ en druk op enter. Het resultaat is hetzelfde als daarnet.
@@ -131,7 +137,7 @@ Wanneer je dit doet zullen alle commando's uit het geïmporteerde script uitgevo
 In het voorbeeld hieronder wordt ook een submodule uit de subfolder \textsf{mymodule} aangeroepen. Deze bevat een functie die opnieuw via de "\lstinline{.}"\ notatie kan worden gebruikt. Via de "\lstinline{dir(mymodule.submodule)}"\ functie kan je ook achterhalen welke functies allemaal gedefinieerd zijn in een bepaalde module. Wanneer een folder geïmporteerd wordt worden enkel de commando's in het "\textsf{\_\_init\_\_.py}"\ script in die folder uitgevoerd. Je kan dan bijvoorbeeld in dit script een aantal andere scripts importeren die zo ook beschikbaar worden in het hoofd script.
 \lstinputlisting{examples/modules.py}
 
-Python bied ook de mogelijkheid om alle definities uit een bepaalde module te importeren in de huidige namespace. Dit gebeurt met het "\lstinline{from mymodule.submodule import *}"\ commando. Eens dit is uitgevoerd zijn alle functies klasses en variabelen gedefinieerd in "\textsf{mymodule\textbackslash submodule.py}"\ rechttreeks beschikbaar, zonder "\lstinline{.}"\ notatie.
+Python bied ook de mogelijkheid om alle definities uit een bepaalde module te importeren in de huidige namespace. Dit gebeurt met het "\lstinline{from mymodule.submodule import *}"\ commando. Eens dit is uitgevoerd zijn alle functies klasses en variabelen gedefinieerd in "\textsf{mymodule\textbackslash submodule.py}"\ rechtstreeks beschikbaar, zonder "\lstinline{.}"\ notatie.
 
 Door op deze manier een project goed te structureren blijft het geheel leesbaar, overzichtelijk en goed te onderhouden.
 \vspace{2cm}
@@ -142,7 +148,7 @@ Door op deze manier een project goed te structureren blijft het geheel leesbaar,
 \includegraphics[height=0.3cm]{fig/by}
 \includegraphics[height=0.3cm]{fig/sa}
 \quad \the\year\ Brecht Baeten
-\vspace{0.5cm}
+\vspace{0.1cm}
 
 Dit werk is gelicenseerd onder de licentie Creative Commons Naamsvermelding-GelijkDelen 4.0 Internationaal. Ga naar \url{http://creativecommons.org/licenses/by-sa/4.0/} om een kopie van de licentie te kunnen lezen.
 \vspace{1cm}
