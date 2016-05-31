@@ -8,7 +8,7 @@ class PerfectGas(IdealGas):
 		"""
 		Returns a PerfectGas Instance
 		
-		Arguments:
+		Parameters:
 		R: float, specific gas constant
 		cp: float, heat capacity at constant pressure
 		"""
@@ -23,7 +23,7 @@ class PerfectGas(IdealGas):
 		"""
 		Returns the change in specific energy of the gas in J/kg
 		
-		Arguments:
+		Parameters:
 		dT: float, temperature difference in K
 		"""
 		return self.cv*dT

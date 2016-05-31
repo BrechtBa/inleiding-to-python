@@ -6,7 +6,7 @@ class IdealGas(object):
 		"""
 		Returns a Gas Instance
 		
-		Arguments:
+		Parameters:
 		name: string, name of the gas
 		R: float, specific gas constant
 		"""
@@ -20,7 +20,7 @@ class IdealGas(object):
 		"""
 		Returns the density of the gas in kg/m3
 		
-		Arguments:
+		Parameters:
 		P: float, pressure in Pa
 		T: float, Temperature in K
 		"""
