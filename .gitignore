@@ -3,3 +3,7 @@
 *.out
 *.synctex.gz
 dist
+*.nav
+*.snm
+*.toc
+*.vrb
