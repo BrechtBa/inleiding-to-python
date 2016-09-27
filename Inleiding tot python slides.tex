@@ -430,6 +430,28 @@ lib.plot.plot_coordinaten(x,y,z)
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+	\frametitle{Oefening}
+	\begin{onlyenv}<1>
+	Bepaal en teken het temperatuursverloop van een massa met warmtecapaciteit $C=100 \times 10^3$ J/K en oppervlakte $A = 6$ m$^2$ die van een initiële temperatuur van $80^\circ$C afkoelt in een omgeving van $20^\circ$C over een periode van 24h voor verschillende isolatie diktes. De massa is geïsoleerd met een materiaal met geleidingscoëfficiënt $k = 0.04$ W/m$^2$K en dikte $d$ tussen $0$ en $20$ cm. De convectiecoëfficiënt $h$ is $8$ W/m$^2$ K
+
+	\vspace{0.5cm}
+Het temperatuursverloop kan gevonden worden door de geldende differentiaal vergelijking te discretiseren en numeriek te integreren:
+
+\begin{equation}
+	T_{i+1} = T_{i} + \frac{U A}{C} (Ta-T_{i}) (t_{i+1}-t_{i})
+\end{equation}	
+met:
+\begin{equation}
+	U = \left(\frac{1}{h} + \frac{d}{k} \right)^{-1}
+\end{equation}
+	
+	\end{onlyenv}
+	\begin{onlyenv}<1>
+		
+	\end{onlyenv}
+\end{frame}  	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
 	\footnotesize
 	\vspace{4cm}
 	\includegraphics[height=0.3cm]{fig/cc} \
