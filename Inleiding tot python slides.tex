@@ -65,11 +65,11 @@
 	
 	\begin{itemize}
 		\item Programeertaal
+		\item Zéér verscheiden toepassingsgebied (Wetenschappelijke berekeningen, Web toepassingen, GUIs, quick scripting)
 		\item Zeer object georienteerd
 		\item Packages voor wetenschappelijke toepassingen
 		\item Gratis
 		\item Verschillende GUI's beschikbaar, niet meegeleverd
-		\item Zéér verscheiden toepassingsgebied (Wetenschappelijke berekeningen, Web toepassingen, GUIs, quick scripting)
 	\end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,27 +82,42 @@
 			\item 2.7 standaard meegeleverd bij Mac OS X
 		\end{itemize}
 		
+		\vspace{0.5cm}
 		\textbf{Linux}
 		\begin{itemize}
 			\item 2.7 standaard meegeleverd bij veel distributies
+			\item 3.5 beschikbaar in de meeste package managers \lstinline[language=bash]{apt-get install python3}
 		\end{itemize}
 		
 	\end{onlyenv}
 	\begin{onlyenv}<2>
 		\textbf{Windows}
 		\begin{itemize}
+			\item WinPython \url{https://winpython.github.io/}
+		\end{itemize}
+		of
+		\begin{itemize}
+			\item Anaconda \url{https://www.continuum.io/downloads}
+			\item Python(x,y) \url{http://python-xy.github.io/}
+		\end{itemize}
+		of
+		\begin{itemize}
 			\item Download een distributie (best 2.7 of 3.5) via \url{https://www.python.org/downloads/}
 			\item Voeg Python toe aan het windows pad
 			\item Download een degelijke text editor, bv. Notepad ++ \url{https://notepad-plus-plus.org/download/}
 			\item Download een degelijke console, vb. ConEmu \url{http://sourceforge.net/projects/conemu/files/latest/download}
 		\end{itemize}
-		of
-		\begin{itemize}
-			\item Anaconda \url{https://www.continuum.io/downloads}
-			\item WinPython \url{https://winpython.github.io/}
-			\item Python(x,y) \url{http://python-xy.github.io/}
-		\end{itemize}
 	\end{onlyenv}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Spyder}
+	
+    \vspace{-0.5cm}
+	
+    \center
+    \includegraphics[height=\textheight]{fig/spyder}
+    
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
@@ -144,7 +159,13 @@
 		\item Met "\lstinline[language=bash]{-i}"\ als argument start een ineractieve sessie na het uitvoeren van het script 
 	\end{itemize}
 	
-	\vspace{1cm}
+	\vspace{0.5cm}
+	
+	\begin{itemize}
+		\item "Run" knop in Spyder
+	\end{itemize}
+		
+	\vspace{0.5cm}
 	
 	\begin{lstlisting}[language=bash]
 > python -i hello_world.py
@@ -226,14 +247,14 @@ def digits2number(A,B,C,D):
 	
 	\vspace{0.2cm}
 	\begin{lstlisting}
-import functies
+from . import functies
 
 val = functies.digits2number(2,4,1,9)
 print(val)
 	\end{lstlisting}
 of
 	\begin{lstlisting}
-from functies import *
+from .functies import *
 
 val = digits2number(2,4,1,9)
 print(val)
@@ -245,7 +266,6 @@ print(val)
 	\frametitle{Packages}
 	\begin{itemize}
 		\item Folders kunnen beschouwd worden als packages door een bestand "\lstinline{__init__.py}" toe te voegen
-		\item Modules in een folder kunnen dan geimporteerd worden
 		\item Code in "\lstinline{__init__.py}" wordt eerst uitgevoerd (vb submodules importeren)
 	\end{itemize}
 	
@@ -257,9 +277,16 @@ print(val)
     |-- functies.py
 	\end{lstlisting}
 	
-	\vspace{0.5cm}
+	\vspace{0.2cm}
 	\begin{lstlisting}
->>> import lib.functies
+# __init__.py
+from . import functies
+	\end{lstlisting}
+			
+	\vspace{0.2cm}
+	\begin{lstlisting}
+>>> import lib
+>>> val = lib.functies.digits2number(2,4,1,9)
 	\end{lstlisting}	
 	
 \end{frame}
@@ -273,17 +300,20 @@ print(val)
         \item Scipy - Algemene wetenschappelijke functies
 	\end{itemize}
 	
-    \textbf{Installatie}
+    \textbf{Installatie:}
     \begin{itemize}
-    	\item Voeg het "pip" pad ("\lstinline[language=bash]{pythonfolder/Scripts}") toe aan het windows pad
-		\item Installatie van python packages via "\lstinline[language=bash]{pip install numpy}"
+        \item Meegeleverd met WinPython
+    \end{itemize}
+	Of
+    \begin{itemize}
+    	\item Voeg het "pip" pad ("\lstinline[language=bash]{pythonfolder/Scripts}") toe aan het windows pad en installeer python packages via "\lstinline[language=bash]{pip install numpy}"
 	\end{itemize}
 	Of
 	\begin{itemize}
         \item Distributie downloaden via de project website en installeren
 	\end{itemize}
 	
-	\vspace{0.5cm}
+	\vspace{0.2cm}
 	\begin{lstlisting}
 >>> import numpy as np
 >>> a = np.zeros(10)
@@ -377,7 +407,7 @@ plt.show()
 		\item Gebruik functies
 		\item Maak binnen functies gebruik van sub-functies indien nuttig
 		\item Geef functies een betekenisvolle naam
-		\item Groepeer functies die bij elkaar horen in een map en voeg deze map toe aan het Matlab pad
+		\item Groepeer functies die bij elkaar horen in een map en importeer deze
 		\item Don't Repeat Yourself (DRY)
 		\item Gebruik betekenisvolle namen voor variabelen
 		\item Documenteer alles
@@ -463,7 +493,7 @@ met:
     Dit werk is gelicenseerd onder de licentie Creative Commons Naamsvermelding-GelijkDelen 4.0 Internationaal. Ga naar http://creativecommons.org/licenses/by-sa/4.0/ om een kopie van de licentie te kunnen lezen.
     	
     \vspace{0.5cm}
-    De bron van dit document en alle tekeningen zijn beschikbaar op https://github.com/BrechtBa/inleiding-tot-matlab
+    De bron van dit document en alle voorbeelden zijn beschikbaar op https://github.com/BrechtBa/inleiding-tot-python
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \end{document}
